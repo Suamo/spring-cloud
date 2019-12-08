@@ -7,4 +7,4 @@ Decrypting configuration properties:
 3. Create encrypted string
     POST localhost:8888/encrypt
     POST localhost:8888/decrypt
-4. Use encrypted string as a configuration value
+4. Use encrypted string as a configuration value starting with a '{cipher}' prefix
