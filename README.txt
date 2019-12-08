@@ -3,3 +3,5 @@ download
 copy all files to
     %JAVA_HOME%\jre\lib\security
 
+POST localhost:8888/encrypt
+POST localhost:8888/decrypt
