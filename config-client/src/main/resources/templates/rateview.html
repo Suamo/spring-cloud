@@ -6,6 +6,9 @@
     <title>Rates</title>
 </head>
 <body>
-    <p th:text="'Your rate is ' + ${rateamount} + ', number of lanes is ' + ${lanes} + ', tall start time is ' + ${tollstart}"/>
+    <p th:text="'rate is ' + ${rateamount} "/>
+    <p th:text="'number of lanes is ' + ${lanes}"/>
+    <p th:text="'tall start time is ' + ${tollstart}"/>
+    <p th:text="'encrypted value is ' + ${connstring}"/>
 </body>
 </html>
