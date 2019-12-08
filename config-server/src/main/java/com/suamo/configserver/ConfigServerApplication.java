@@ -19,14 +19,17 @@ public class ConfigServerApplication {
 
     @EnableWebSecurity
     @Configuration
-    public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+    public static class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         @Override
         protected void configure(HttpSecurity http) throws Exception {
             http
-                    .authorizeRequests().anyRequest()
-                    .authenticated()
+                    .csrf()
+                    .disable()
+                    .httpBasic()
                     .and()
-                    .httpBasic();
+                    .authorizeRequests()
+                    .anyRequest()
+                    .authenticated();
         }
     }
 }
