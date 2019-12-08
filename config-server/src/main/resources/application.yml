@@ -11,10 +11,10 @@ spring:
       server:
         git:
           uri: https://github.com/Suamo/spring-cloud
-          searchPaths: 'config/station*'
+          searchPaths: config,config/station*
           repos:
             perf:
               pattern:
                 - "*/perf"
               uri: https://github.com/Suamo/spring-cloud
-              searchPaths: 'preformance/station*'
+              searchPaths: preformance,preformance/station*
