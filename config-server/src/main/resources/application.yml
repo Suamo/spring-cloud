@@ -11,7 +11,7 @@ spring:
       server:
         git:
           uri: https://github.com/Suamo/spring-cloud
-          searchPaths: config,config/station*
+          searchPaths: configurations,configurations/station*
           repos:
             perf:
               pattern:
