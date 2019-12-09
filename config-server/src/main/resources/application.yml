@@ -10,6 +10,8 @@ spring:
     config:
       server:
         git:
+          # Using GIT as a configurations source
+          # Other sources are any JDBC compatible database, Subversion, Hashicorp Vault, Credhub and local filesystems.
           uri: https://github.com/Suamo/spring-cloud
           searchPaths: configurations,configurations/station*
           repos:
