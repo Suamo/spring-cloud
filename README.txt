@@ -12,6 +12,17 @@ Decrypting configuration properties:
 
     4. Use encrypted string as a configuration value starting with a '{cipher}' prefix
 
-Client side Actuator is turned ON.
-So if configuration has been updated on GIT the caches can be updated via
-POST localhost:8080/actuator/refresh
+Refreshing configurations cache:
+    Client side Actuator is turned ON.
+    So if configuration has been updated on GIT the caches can be updated via
+    POST localhost:8080/actuator/refresh
+
+Using MySQL
+    https://hub.docker.com/_/mysql
+    docker pull mysql
+    docker run --name mysql -e MYSQL_ROOT_PASSWORD=1234 -d mysql:latest
+    docker exec -it mysql bash
+        mysql -u root -p
+        SHOW DATABASES;
+        CREATE DATABASE tasklogs;
+    docker logs some-mysql
