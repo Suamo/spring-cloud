@@ -26,3 +26,9 @@ Using MySQL
         SHOW DATABASES;
         CREATE DATABASE tasklogs;
     docker logs some-mysql
+
+Using RabbitMQ
+    https://hub.docker.com/_/rabbitmq
+    docker pull rabbitmq
+    docker run -d --hostname localhost --name rabbitmq rabbitmq:latest
+    docker run -d --hostname localhost --name rabbitmq-management -p 15672:15672 -e RABBITMQ_DEFAULT_USER=user -e RABBITMQ_DEFAULT_PASS=1234 rabbitmq:3-management

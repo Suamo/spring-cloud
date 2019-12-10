@@ -24,6 +24,7 @@
         <module>config-client</module>
         <module>config-server</module>
         <module>cloud-task</module>
+        <module>cloud-task-sink</module>
     </modules>
 
 </project>

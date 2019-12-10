@@ -1,12 +1,12 @@
-package com.suamo.cloudtask;
+package com.suamo.tasksink;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-//@SpringBootTest
-class CloudTaskApplicationTests {
+@SpringBootTest
+class TaskSinkApplicationTests {
 
-//	@Test
+	@Test
 	void contextLoads() {
 	}
 
