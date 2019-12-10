@@ -20,7 +20,7 @@ Refreshing configurations cache:
 Using MySQL
     https://hub.docker.com/_/mysql
     docker pull mysql
-    docker run --name mysql -e MYSQL_ROOT_PASSWORD=1234 -d mysql:latest
+    docker run -p 3306:3306 --name mysql -e MYSQL_ROOT_PASSWORD=1234 -v /home/docker/mysql-data:/var/lib/mysql -d mysql:latest
     docker exec -it mysql bash
         mysql -u root -p
         SHOW DATABASES;
