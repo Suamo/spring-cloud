@@ -23,6 +23,8 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-stream-rabbit</artifactId>
         </dependency>
+
+        <!-- https://github.com/spring-cloud/spring-cloud-dataflow/releases/tag/v2.3.0.RELEASE -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-deployer-local</artifactId>
