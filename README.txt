@@ -19,7 +19,6 @@ Refreshing configurations cache:
 
 Using MySQL
     https://hub.docker.com/_/mysql
-    docker pull mysql
     docker run -p 3306:3306 --name mysql -e MYSQL_ROOT_PASSWORD=1234 -v /home/docker/mysql-data:/var/lib/mysql -d mysql:latest
     docker exec -it mysql bash
         mysql -u root -p
@@ -29,6 +28,10 @@ Using MySQL
 
 Using RabbitMQ
     https://hub.docker.com/_/rabbitmq
-    docker pull rabbitmq
     docker run -d --hostname localhost --name rabbitmq -p 5672:5672 -e RABBITMQ_DEFAULT_USER=user -e RABBITMQ_DEFAULT_PASS=1234 rabbitmq:latest
     docker run -d --hostname localhost --name rabbitmq-management -p 15672:15672 -e RABBITMQ_DEFAULT_USER=user -e RABBITMQ_DEFAULT_PASS=1234 rabbitmq:3-management
+
+    management: http://localhost:15672/
+
+    Intellij Idea fix: Run -> Edit Configuration -> TaskSinkApplication
+        Disable: 'Enable launch optimization' and 'Enable JMX agent' checkboxes
