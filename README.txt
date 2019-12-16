@@ -28,10 +28,16 @@ Using MySQL
 
 Using RabbitMQ
     https://hub.docker.com/_/rabbitmq
-    docker run -d --hostname localhost --name rabbitmq -p 5672:5672 -e RABBITMQ_DEFAULT_USER=user -e RABBITMQ_DEFAULT_PASS=1234 rabbitmq:latest
-    docker run -d --hostname localhost --name rabbitmq-management -p 15672:15672 -e RABBITMQ_DEFAULT_USER=user -e RABBITMQ_DEFAULT_PASS=1234 rabbitmq:3-management
+    docker run -d --hostname localhost --name rabbitmq -p 5672:5672 rabbitmq:3.8.2
+    docker run -d --hostname localhost --name rabbitmq-management -p 15672:15672 rabbitmq:3.8.2-management
 
     management: http://localhost:15672/
+        guest:guest
 
     Intellij Idea fix: Run -> Edit Configuration -> TaskSinkApplication
         Disable: 'Enable launch optimization' and 'Enable JMX agent' checkboxes
+
+
+
+netstat -fo | findstr 15672
+tasklist | findstr 15188

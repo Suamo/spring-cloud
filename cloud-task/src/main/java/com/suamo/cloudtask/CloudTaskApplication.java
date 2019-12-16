@@ -20,8 +20,9 @@ public class CloudTaskApplication {
     }
 
     public static class TollProcessingTask implements CommandLineRunner {
+
         @Override
-        public void run(String... args) throws Exception {
+        public void run(String... args) {
             if (null != args) {
                 System.out.println("Parameter length is " + args.length);
 
@@ -32,6 +33,7 @@ public class CloudTaskApplication {
                 System.out.println(String.format("Station ID is %s, plate is %s, timestamp is %s", stationId, licensePlate, timestamp));
             }
         }
+
     }
 
 }
