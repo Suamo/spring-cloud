@@ -26,6 +26,7 @@
         <module>cloud-task</module>
         <module>cloud-task-sink</module>
         <module>cloud-task-intake</module>
+        <module>rabbitmq-test</module>
     </modules>
 
 </project>

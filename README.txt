@@ -28,9 +28,8 @@ Using MySQL
 
 Using RabbitMQ
     https://hub.docker.com/_/rabbitmq
-    docker run -d --hostname localhost --name rabbitmq -p 5672:5672 rabbitmq:3.8.2
-    docker run -d --hostname localhost --name rabbitmq-management -p 15672:15672 rabbitmq:3.8.2-management
-
+    docker run -d -h rabbit-host --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.8.2-management
+    (command starts both: rabbitmq and rabbitmq-managemen)
     management: http://localhost:15672/
         guest:guest
 
