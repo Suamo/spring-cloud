@@ -1,6 +1,6 @@
 package com.suamo.taskintake;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.messaging.Source;
 import org.springframework.cloud.task.launcher.TaskLaunchRequest;
@@ -15,13 +15,18 @@ import java.util.List;
 @EnableBinding(Source.class)
 public class TaskProcessor {
 
-    @Autowired
+    @Value("${maven.task.url}")
+    private String mavenUrl;
+
     private Source source;
 
+    public TaskProcessor(Source source) {
+        this.source = source;
+    }
+
     public void publishRequest(String payload) {
-        String url = "maven://com.suamo:cloud-task:jar:0.0.1-SNAPSHOT";
         List<String> input = new ArrayList<>(Arrays.asList(payload.split(",")));
-        TaskLaunchRequest request = new TaskLaunchRequest(url, input, null, null, null);
+        TaskLaunchRequest request = new TaskLaunchRequest(mavenUrl, input, null, null, null);
 
         System.out.println("created task request");
 

@@ -1,6 +1,5 @@
 package com.suamo.taskintake;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,8 +7,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TaskController {
 
-    @Autowired
-    private TaskProcessor processor;
+    private final TaskProcessor processor;
+
+    public TaskController(TaskProcessor processor) {
+        this.processor = processor;
+    }
 
     @PostMapping("/tasks")
     public String launchTask(@RequestBody String payload) {
