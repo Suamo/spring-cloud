@@ -19,4 +19,4 @@ spring:
               pattern:
                 - "*/perf"
               uri: https://github.com/Suamo/spring-cloud
-              searchPaths: preformance,preformance/station*
+              searchPaths: performance,performance/station*
