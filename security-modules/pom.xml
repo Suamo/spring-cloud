@@ -21,6 +21,8 @@
     <modules>
         <module>secure-ui</module>
         <module>secure-service</module>
+        <module>secure-auth-server</module>
+        <module>secure-cli</module>
     </modules>
 
 </project>
