@@ -31,8 +31,11 @@ public class SecureCliApplication implements CommandLineRunner {
         resourceDetails.setClientId("pluralsight");
         resourceDetails.setClientSecret("pluralsight");
 
-        resourceDetails.setUsername("agoldberg");
-        resourceDetails.setPassword("pass1");
+        // will not work because of the roles
+        // resourceDetails.setUsername("agoldberg");
+        // resourceDetails.setPassword("pass1");
+        resourceDetails.setUsername("bgoldberg");
+        resourceDetails.setPassword("pass2");
 
         OAuth2RestTemplate template = new OAuth2RestTemplate(resourceDetails);
         OAuth2AccessToken token = template.getAccessToken();
