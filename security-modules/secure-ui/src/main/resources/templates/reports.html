@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Secure App Reports Page</title>
+</head>
+
+<body>
+
+<h1>Secure App Reports Page</h1>
+<table>
+    <tr>
+        <th>Station ID</th>
+        <th>Plate</th>
+        <th>Timestamp</th>
+    </tr>
+    <tr th:each="toll : ${tolls}">
+        <td th:text="${toll.stationId}"></td>
+        <td th:text="${toll.licensePlate}"></td>
+        <td th:text="${toll.timestamp}"></td>
+    </tr>
+</table>
+
+</body>
+</html>
