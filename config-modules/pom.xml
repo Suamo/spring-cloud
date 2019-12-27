@@ -8,7 +8,7 @@
     <packaging>pom</packaging>
 
     <parent>
-        <groupId>ua.suamo</groupId>
+        <groupId>com.suamo</groupId>
         <artifactId>spring-cloud</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>

@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>security-modules</artifactId>
+    <artifactId>latency-modules</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
@@ -19,10 +19,16 @@
     </properties>
 
     <modules>
-        <module>secure-ui</module>
-        <module>secure-service</module>
-        <module>secure-auth-server</module>
-        <module>secure-cli</module>
+        <module>customer-service</module>
+        <module>data-service1</module>
+        <module>data-service2</module>
     </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
