@@ -23,7 +23,7 @@ public class DataService1Application {
 
         //add arbitrary latency
         Random r = new Random();
-        int multiplier = r.nextInt() * 1000;
+        int multiplier = r.nextInt(10) * 500;
         System.out.println("multiplier: " + multiplier);
         Thread.sleep(multiplier);
 
