@@ -20,11 +20,13 @@ import java.util.List;
 @EnableOAuth2Sso
 public class ReportController extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private OAuth2ClientContext clientContext;
+    private final OAuth2ClientContext clientContext;
+    private final OAuth2RestTemplate oAuth2RestTemplate;
 
-    @Autowired
-    private OAuth2RestTemplate oAuth2RestTemplate;
+    public ReportController(OAuth2ClientContext clientContext, OAuth2RestTemplate oAuth2RestTemplate) {
+        this.clientContext = clientContext;
+        this.oAuth2RestTemplate = oAuth2RestTemplate;
+    }
 
     @GetMapping("/")
     public String loadHome() {
