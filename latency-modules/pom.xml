@@ -22,13 +22,20 @@
         <module>customer-service</module>
         <module>data-service1</module>
         <module>data-service2</module>
+<!--        <module>zipkin-server</module>-->
     </modules>
 
     <dependencies>
+<!--        sleuth comes with zipkin-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-sleuth</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-sleuth</artifactId>
+            <artifactId>spring-cloud-starter-zipkin</artifactId>
         </dependency>
+
     </dependencies>
 
 </project>

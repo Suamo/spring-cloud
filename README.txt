@@ -36,6 +36,11 @@ Using RabbitMQ
     Intellij Idea fix: Run -> Edit Configuration -> TaskSinkApplication
         Disable: 'Enable launch optimization' and 'Enable JMX agent' checkboxes
 
+Zipkin
+    https://hub.docker.com/r/openzipkin/zipkin-ui
+    docker run -d -p 9411:9411 openzipkin/zipkin
+    http://localhost:9411/
+
 
 
 netstat -fo | findstr 15672
