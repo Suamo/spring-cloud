@@ -22,10 +22,11 @@
     </properties>
 
     <modules>
-        <module>config-modules</module>
-        <module>task-modules</module>
-        <module>security-modules</module>
-        <module>latency-modules</module>
+<!--        <module>config-modules</module>-->
+<!--        <module>task-modules</module>-->
+<!--        <module>security-modules</module>-->
+<!--        <module>latency-modules</module>-->
+        <module>coordination-modules</module>
     </modules>
 
     <build>
