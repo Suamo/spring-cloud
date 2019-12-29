@@ -17,9 +17,9 @@ public class FastPassController {
     private List<FastPassCustomer> customerList = new ArrayList<>();
 
     public FastPassController() {
-        customerList.add(new FastPassCustomer("100", "Richard", "555-123-4567", BigDecimal.valueOf(1)));
-        customerList.add(new FastPassCustomer("101", "Jason", "555-321-7654", BigDecimal.valueOf(1)));
-        customerList.add(new FastPassCustomer("102", "Lisa", "555-987-6543", BigDecimal.valueOf(1)));
+        customerList.add(new FastPassCustomer("100", "Richard", "555-123-4567", BigDecimal.valueOf(0.2)));
+        customerList.add(new FastPassCustomer("101", "Jason", "555-321-7654", BigDecimal.valueOf(0.3)));
+        customerList.add(new FastPassCustomer("102", "Lisa", "555-987-6543", BigDecimal.valueOf(0.4)));
     }
 
     @GetMapping(value = "/fastpass", params = {"fastpassid"})
