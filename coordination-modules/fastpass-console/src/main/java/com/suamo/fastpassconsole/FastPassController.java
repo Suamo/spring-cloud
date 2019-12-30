@@ -1,5 +1,6 @@
 package com.suamo.fastpassconsole;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
@@ -23,6 +24,7 @@ public class FastPassController {
     }
 
     @GetMapping(value = "/customerdetails", params = {"fastpassid"})
+    @HystrixCommand(fallbackMethod = "getFastPassCustomerDetailsBackup")
     public String getFastPassById(@RequestParam String fastpassid, Model model) {
         String url = "http://fastpass-service/fastpass?fastpassid=" + fastpassid;
         FastPassCustomer c = rest.getForObject(url, FastPassCustomer.class);
@@ -31,11 +33,12 @@ public class FastPassController {
         return "console";
     }
 
-    @GetMapping(value = "/customerdetails", params = {"fastpassphone"})
-    public String getFastPassByPhone(@RequestParam String fastpassphone, Model model) {
-        String url = "http://fastpass-service/fastpass?fastpassphone=" + fastpassphone;
-        FastPassCustomer c = rest.getForObject(url, FastPassCustomer.class);
-        System.out.println("received customer details");
+    public String getFastPassCustomerDetailsBackup(@RequestParam String fastpassid, Model model) {
+
+        FastPassCustomer c = new FastPassCustomer();
+        c.setFastPassId(fastpassid);
+        System.out.println("fallback operation called");
+
         model.addAttribute("customer", c);
         return "console";
     }

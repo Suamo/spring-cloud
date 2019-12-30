@@ -24,6 +24,8 @@
         <module>fastpass-service</module>
         <module>tollrate-billboard-service</module>
         <module>fastpass-console</module>
+        <module>hystrix-dashboard</module>
+        <module>hystrix-turbine</module>
     </modules>
 
     <dependencies>

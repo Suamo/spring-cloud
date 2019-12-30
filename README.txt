@@ -41,6 +41,11 @@ Zipkin
     docker run -d -p 9411:9411 openzipkin/zipkin
     http://localhost:9411/
 
+Hystrix
+    implements the circuit breaker pattern
+    https://cloud.spring.io/spring-cloud-netflix/reference/html/#circuit-breaker-spring-cloud-circuit-breaker-with-hystrix
+    https://cloud.spring.io/spring-cloud-netflix/multi/multi__circuit_breaker_hystrix_clients.html
+
 
 
 netstat -fo | findstr 15672

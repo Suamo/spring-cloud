@@ -10,18 +10,18 @@ import java.time.Instant;
 @RestController
 public class TollRateController {
 
-    @GetMapping("/tollrate/{stationId}")
-    public TollRate getTollRate(@PathVariable int stationId) {
-        System.out.println("Station requested: " + stationId);
-        switch (stationId) {
+    @GetMapping("/tollrate/{stationid}")
+    public TollRate getTollRate(@PathVariable int stationid) {
+        System.out.println("Station requested: " + stationid);
+        switch (stationid) {
             case 1:
-                return new TollRate(stationId, new BigDecimal("0.55"), Instant.now().toString());
+                return new TollRate(stationid, new BigDecimal("0.55"), Instant.now().toString());
             case 2:
-                return new TollRate(stationId, new BigDecimal("1.05"), Instant.now().toString());
+                return new TollRate(stationid, new BigDecimal("1.05"), Instant.now().toString());
             case 3:
-                return new TollRate(stationId, new BigDecimal("0.60"), Instant.now().toString());
+                return new TollRate(stationid, new BigDecimal("0.60"), Instant.now().toString());
             default:
-                return new TollRate(stationId, new BigDecimal("1.00"), Instant.now().toString());
+                return new TollRate(stationid, new BigDecimal("1.00"), Instant.now().toString());
         }
     }
 

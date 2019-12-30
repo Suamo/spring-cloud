@@ -1,5 +1,6 @@
 package com.suamo.tollratebillboardservice;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.suamo.tollrateservice.TollRate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -24,6 +25,7 @@ public class BillboardController {
     }
 
     @GetMapping("/dashboard")
+    @HystrixCommand(fallbackMethod = "getTollRateBackup")
     public String getTollRate(@RequestParam int stationId, Model model) {
 
         // important - no exact hostname or port
@@ -33,7 +35,13 @@ public class BillboardController {
         System.out.println("stationId: " + stationId);
         model.addAttribute("rate", tr.getCurrentRate());
 
-        return "console";
+        return "dashboard";
+    }
+
+    public String getTollRateBackup(@RequestParam int stationId, Model model) {
+        System.out.println("fallback operation called");
+        model.addAttribute("rate", "1.00");
+        return "dashboard";
     }
 
 }
