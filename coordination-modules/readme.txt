@@ -13,5 +13,11 @@ endpoints:
     http://localhost:8087/turbine.stream
     http://localhost:8087/clusters
 
+    http://localhost:8087/turbine.stream
+    http://localhost:8087/turbine.stream?cluster=default
+    http://localhost:8087/turbine.stream?cluster=tollrate-billboard
+
 Full explanation in the spec:
-    https://cloud.spring.io/spring-cloud-netflix/reference/html/#health-indicator
+    https://cloud.spring.io/spring-cloud-netflix/reference/html/#circuit-breaker-hystrix-dashboard
+    https://cloud.spring.io/spring-cloud-netflix/reference/html/#turbine
+    https://cloud.spring.io/spring-cloud-netflix/reference/html/#turbine-stream
