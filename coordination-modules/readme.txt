@@ -6,7 +6,12 @@ endpoints:
 
     http://localhost:8082/customerdetails?fastpassid=101
     http://localhost:8082/actuator/hystrix.stream
+    http://localhost:8082/actuator/health
 
     http://localhost:8085/hystrix
 
-    http://localhost:8087/turbine/turbine.stream?cluster=TOLLRATE-BILLBOARD
+    http://localhost:8087/turbine.stream
+    http://localhost:8087/clusters
+
+Full explanation in the spec:
+    https://cloud.spring.io/spring-cloud-netflix/reference/html/#health-indicator

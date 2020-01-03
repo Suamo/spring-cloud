@@ -1,10 +1,6 @@
 package com.suamo.fastpassconsole;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,15 +8,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
 @Controller
-public class FastPassController {
+public class FastPassConsoleController {
 
-    @Autowired
-    private RestTemplate rest;
+    private final RestTemplate rest;
 
-    @Bean
-    @LoadBalanced
-    public RestTemplate restTemplate(RestTemplateBuilder builder) {
-        return builder.build();
+    public FastPassConsoleController(RestTemplate rest) {
+        this.rest = rest;
     }
 
     @GetMapping(value = "/customerdetails", params = {"fastpassid"})
@@ -34,7 +27,6 @@ public class FastPassController {
     }
 
     public String getFastPassCustomerDetailsBackup(@RequestParam String fastpassid, Model model) {
-
         FastPassCustomer c = new FastPassCustomer();
         c.setFastPassId(fastpassid);
         System.out.println("fallback operation called");

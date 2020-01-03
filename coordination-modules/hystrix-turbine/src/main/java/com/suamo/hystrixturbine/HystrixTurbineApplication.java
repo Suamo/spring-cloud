@@ -2,10 +2,13 @@ package com.suamo.hystrixturbine;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.turbine.stream.EnableTurbineStream;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.turbine.EnableTurbine;
 
 @SpringBootApplication
-@EnableTurbineStream
+//@EnableTurbineStream
+@EnableTurbine
+@EnableEurekaClient
 /*https://cloud.spring.io/spring-cloud-netflix/reference/html/#turbine-stream*/
 public class HystrixTurbineApplication {
 

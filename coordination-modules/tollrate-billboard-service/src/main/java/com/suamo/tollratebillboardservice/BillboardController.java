@@ -2,10 +2,6 @@ package com.suamo.tollratebillboardservice;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.suamo.tollrateservice.TollRate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,13 +11,10 @@ import org.springframework.web.client.RestTemplate;
 @Controller
 public class BillboardController {
 
-    @Autowired
-    private RestTemplate rest;
+    private final RestTemplate rest;
 
-    @Bean
-    @LoadBalanced
-    public RestTemplate restTemplate(RestTemplateBuilder builder) {
-        return builder.build();
+    public BillboardController(RestTemplate rest) {
+        this.rest = rest;
     }
 
     @GetMapping("/dashboard")
