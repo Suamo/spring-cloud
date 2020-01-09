@@ -1,6 +1,6 @@
 package com.suamo.fastpassconsole;
 
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
 @Controller
+@RibbonClient(name = "fastpass-service-local")
 public class FastPassConsoleController {
 
     private final RestTemplate rest;
@@ -17,9 +18,10 @@ public class FastPassConsoleController {
     }
 
     @GetMapping(value = "/customerdetails", params = {"fastpassid"})
-    @HystrixCommand(fallbackMethod = "getFastPassCustomerDetailsBackup")
+//    @HystrixCommand(fallbackMethod = "getFastPassCustomerDetailsBackup")
     public String getFastPassById(@RequestParam String fastpassid, Model model) {
-        String url = "http://fastpass-service/fastpass?fastpassid=" + fastpassid;
+//        String url = "http://fastpass-service/fastpass?fastpassid=" + fastpassid; // discovery service version
+        String url = "http://fastpass-service-local/fastpass?fastpassid=" + fastpassid; // manuall Ribbon version
         FastPassCustomer c = rest.getForObject(url, FastPassCustomer.class);
         System.out.println("received customer details");
         model.addAttribute("customer", c);
@@ -34,5 +36,4 @@ public class FastPassConsoleController {
         model.addAttribute("customer", c);
         return "console";
     }
-
 }
