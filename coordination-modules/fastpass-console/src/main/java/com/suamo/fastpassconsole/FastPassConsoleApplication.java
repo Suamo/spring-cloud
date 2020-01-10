@@ -8,7 +8,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.client.loadbalancer.LoadBalancedRetryFactory;
 import org.springframework.context.annotation.Bean;
+import org.springframework.retry.backoff.BackOffPolicy;
+import org.springframework.retry.backoff.NoBackOffPolicy;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
@@ -34,5 +37,16 @@ public class FastPassConsoleApplication {
     @Bean
     public IRule ribbonRule() {
         return new RoundRobinRule();
+    }
+
+    @Bean
+    LoadBalancedRetryFactory retryFactory() {
+        return new LoadBalancedRetryFactory() {
+            @Override
+            public BackOffPolicy createBackOffPolicy(String service) {
+//                return new ExponentialBackOffPolicy();
+                return new NoBackOffPolicy();
+            }
+        };
     }
 }
