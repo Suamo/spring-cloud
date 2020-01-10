@@ -24,12 +24,14 @@ public class FastPassController {
 
     @GetMapping(value = "/fastpass", params = {"fastpassid"})
     public FastPassCustomer getFastPassById(@RequestParam String fastpassid) {
+        System.out.println("-> getFastPassById" + fastpassid);
         Predicate<FastPassCustomer> p = c -> c.getFastPassId().equals(fastpassid);
         return customerList.stream().filter(p).findFirst().get();
     }
 
     @GetMapping(value = "/fastpass", params = {"fastpassphone"})
     public FastPassCustomer getFastPassByPhone(@RequestParam String fastpassphone) {
+        System.out.println("-> getFastPassByPhone" + fastpassphone);
         Predicate<FastPassCustomer> p = c -> c.getFastPassPhone().equals(fastpassphone);
         return customerList.stream().filter(p).findFirst().get();
     }

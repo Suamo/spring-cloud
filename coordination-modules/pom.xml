@@ -21,6 +21,7 @@
         <module>fastpass-console</module>
         <module>hystrix-dashboard</module>
         <module>hystrix-turbine</module>
+        <module>zuul-apiproxy</module>
     </modules>
 
     <dependencies>
