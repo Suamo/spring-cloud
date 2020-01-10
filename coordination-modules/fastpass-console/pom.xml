@@ -15,6 +15,11 @@
 
     <dependencies>
 
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-stream-rabbit</artifactId>
+        </dependency>
+
 <!--        eureka uses ribbon-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>

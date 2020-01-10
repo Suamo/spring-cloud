@@ -27,6 +27,7 @@
 <!--        <module>security-modules</module>-->
 <!--        <module>latency-modules</module>-->
         <module>coordination-modules</module>
+        <module>stream-modules</module>
     </modules>
 
     <build>
