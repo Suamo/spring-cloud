@@ -14,7 +14,7 @@
     </parent>
 
     <modules>
-<!--        <module>secure-ui</module>-->
+        <module>stream-tollintake</module>
     </modules>
 
 </project>
