@@ -18,12 +18,22 @@ public class StreamTollintakeApplication {
         SpringApplication.run(StreamTollintakeApplication.class, args);
     }
 
-    @StreamListener(Sink.INPUT)
+//    @StreamListener( Sink.INPUT)
 //    @ServiceActivator(inputChannel = Sink.INPUT)
 //    @StreamListener(Processor.INPUT)
 //    @SendTo(Processor.OUTPUT)
-    public void log(String msg) {
-        System.out.println(msg);
+//    public void log(String msg) {
+//        System.out.println(msg);
 //        return msg;
+//    }
+
+    @StreamListener(target = Sink.INPUT, condition = "headers['speed'] > 40")
+    public void logFast(String msg) {
+        System.out.println("fast - " + msg);
+    }
+
+    @StreamListener(target = Sink.INPUT, condition = "headers['speed'] <= 40")
+    public void logSlow(String msg) {
+        System.out.println("slow - " + msg);
     }
 }

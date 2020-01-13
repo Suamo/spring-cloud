@@ -24,7 +24,7 @@ public class TollPublisher {
 //        return "{station:\"20\", customerid:\"100\", timestamp:\"2017-07-12T03:15:00\"}";
 
         Toll payload = new Toll("20", "100", "2017-07-12T03:15:00");
-        return () -> MessageBuilder.withPayload(payload).build();
+        return () -> MessageBuilder.withPayload(payload).setHeader("speed", r.nextInt(8) * 10).build();
     }
 
     static class Toll {
