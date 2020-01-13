@@ -19,7 +19,7 @@ public class TollPublisher {
 
     @Bean
 //    @InboundChannelAdapter(channel = Source.OUTPUT)
-    @InboundChannelAdapter(channel = "fastpassTollChannel", poller = @Poller(fixedDelay = "2000"))
+//    @InboundChannelAdapter(channel = "fastpassTollChannel", poller = @Poller(fixedDelay = "2000"))
     public MessageSource<Toll> sendTollCharge() {
 //        return "{station:\"20\", customerid:\"100\", timestamp:\"2017-07-12T03:15:00\"}";
 
