@@ -46,7 +46,19 @@ Hystrix
     https://cloud.spring.io/spring-cloud-netflix/reference/html/#circuit-breaker-spring-cloud-circuit-breaker-with-hystrix
     https://cloud.spring.io/spring-cloud-netflix/multi/multi__circuit_breaker_hystrix_clients.html
 
+Redis (REmote DIctionary Server)
+    https://hub.docker.com/_/redis/
+    docker run --name redis -p 6379:6379 -d redis
 
+Spring Data Flow
+    https://repo.spring.io/release/org/springframework/cloud/spring-cloud-dataflow-server/2.3.0.RELEASE/spring-cloud-dataflow-server-2.3.0.RELEASE.jar
+    https://repo.spring.io/release/org/springframework/cloud/spring-cloud-dataflow-shell/2.3.0.RELEASE/spring-cloud-dataflow-shell-2.3.0.RELEASE.jar
+    java -jar spring-cloud-dataflow-server-2.3.0.RELEASE.jar
+        --spring.datasource.url=jdbc:mysql:3306//dcdf --spring.datasource.username=root --spring.datasource.password=1234 --spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
+        --spring.rabbitmq.host=localhost --spring.rabbitmq.port=5672 --spring.rabbitmq.username=quest --spring.rabbitmq.password=quest
+    in the directory of docker-compose.yml run:
+        set DATAFLOW_VERSION=2.3.0.RELEASE
+        docker-compose up
 
 netstat -fo | findstr 15672
 tasklist | findstr 15188
