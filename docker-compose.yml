@@ -12,6 +12,8 @@ services:
       MYSQL_ROOT_PASSWORD: 1234
     ports:
       - 3306:3306
+    expose:
+      - 3306
 
   rabbitmq:
     image: rabbitmq:3.8.2-management
@@ -19,6 +21,8 @@ services:
     ports:
       - 5672:5672
       - 15672:15672
+    expose:
+      - 5672
 
   redis:
     image: redis
@@ -37,11 +41,29 @@ services:
       - SPRING_DATASOURCE_PASSWORD=1234
       - SPRING_DATASOURCE_DRIVER_CLASS_NAME=org.mariadb.jdbc.Driver
       - spring.cloud.dataflow.applicationProperties.stream.spring.rabbitmq.host=rabbitmq
+      - spring.cloud.skipper.client.serverUri=http://skipper-server:7577/api
     depends_on:
       - rabbitmq
       - redis
       - mysql
     entrypoint: "./wait-for-it.sh mysql:3306 -- java -jar /maven/spring-cloud-dataflow-server.jar"
+
+  skipper-server:
+    image: springcloud/spring-cloud-skipper-server:${SKIPPER_VERSION:?SKIPPER_VERSION is not set!}
+    container_name: skipper
+    ports:
+      - "7577:7577"
+      - "9000-9010:9000-9010"
+      - "20000-20105:20000-20105"
+    environment:
+      - SPRING_CLOUD_SKIPPER_SERVER_PLATFORM_LOCAL_ACCOUNTS_DEFAULT_PORTRANGE_LOW=20000
+      - SPRING_CLOUD_SKIPPER_SERVER_PLATFORM_LOCAL_ACCOUNTS_DEFAULT_PORTRANGE_HIGH=20100
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/dataflow
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=1234
+      - SPRING_DATASOURCE_DRIVER_CLASS_NAME=org.mariadb.jdbc.Driver
+    entrypoint: "./wait-for-it.sh mysql:3306 -- java -Djava.security.egd=file:/dev/./urandom -jar /spring-cloud-skipper-server.jar"
+
 
 #  app-import:
 #    image: springcloud/openjdk:2.0.0.RELEASE

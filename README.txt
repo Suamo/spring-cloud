@@ -58,7 +58,19 @@ Spring Data Flow
         --spring.rabbitmq.host=localhost --spring.rabbitmq.port=5672 --spring.rabbitmq.username=quest --spring.rabbitmq.password=quest
     in the directory of docker-compose.yml run:
         set DATAFLOW_VERSION=2.3.0.RELEASE
+        set SKIPPER_VERSION=2.2.1.RELEASE
         docker-compose up
+
+    Shell:
+    (spec https://docs.spring.io/spring-cloud-dataflow/docs/current-SNAPSHOT/reference/htmlsingle)
+    java -jar spring-cloud-dataflow-shell-2.3.0.RELEASE.jar
+    app import --uri https://dataflow.spring.io/rabbitmq-maven-latest
+    app list
+    app info --name file --type sink
+    stream create --definition "http --port=8086 | file --directory=C:/DEV --suffix=txt --name=output" --name hellodataflow
+    stream list
+    stream deploy --name hellodataflow
+    (accessgin tammingmq management always hangs!)
 
 netstat -fo | findstr 15672
 tasklist | findstr 15188
