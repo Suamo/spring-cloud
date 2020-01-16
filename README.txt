@@ -61,6 +61,9 @@ Spring Data Flow
         set SKIPPER_VERSION=2.2.1.RELEASE
         docker-compose up
 
+    docker exec -it dataflow-server java -jar shell.jar
+
+
     Shell:
     (spec https://docs.spring.io/spring-cloud-dataflow/docs/current-SNAPSHOT/reference/htmlsingle)
     java -jar spring-cloud-dataflow-shell-2.3.0.RELEASE.jar
@@ -68,9 +71,10 @@ Spring Data Flow
     app list
     app info --name file --type sink
     stream create --definition "http --port=8086 | file --directory=C:/DEV --suffix=txt --name=output" --name hellodataflow
+    stream create --definition "http | log" --name http-to-log
     stream list
     stream deploy --name hellodataflow
-    (accessgin tammingmq management always hangs!)
+    (accessging rabbitmq management always hangs!)
 
 netstat -fo | findstr 15672
 tasklist | findstr 15188

@@ -1,0 +1,4 @@
+
+set DATAFLOW_VERSION=2.3.0.RELEASE
+set SKIPPER_VERSION=2.2.1.RELEASE
+docker-compose -f ./docker-compose.yml -f ./docker-compose-rabbitmq.yml -f ./docker-compose-prometheus.yml -f ./docker-compose-influxdb.yml up
