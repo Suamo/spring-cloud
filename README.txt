@@ -61,19 +61,21 @@ Spring Data Flow
         set SKIPPER_VERSION=2.2.1.RELEASE
         docker-compose up
 
-    docker exec -it dataflow-server java -jar shell.jar
 
 
     Shell:
     (spec https://docs.spring.io/spring-cloud-dataflow/docs/current-SNAPSHOT/reference/htmlsingle)
-    java -jar spring-cloud-dataflow-shell-2.3.0.RELEASE.jar
+    start:
+        docker exec -it dataflow-server java -jar shell.jar
+
     app import --uri https://dataflow.spring.io/rabbitmq-maven-latest
     app list
     app info --name file --type sink
     stream create --definition "http --port=8086 | file --directory=C:/DEV --suffix=txt --name=output" --name hellodataflow
-    stream create --definition "http | log" --name http-to-log
+    stream create --definition "http | log" --name http-ingest
     stream list
     stream deploy --name hellodataflow
+    stream deploy --name http-ingest
     (accessging rabbitmq management always hangs!)
 
 netstat -fo | findstr 15672
