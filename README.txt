@@ -67,12 +67,14 @@ Spring Data Flow
     (spec https://docs.spring.io/spring-cloud-dataflow/docs/current-SNAPSHOT/reference/htmlsingle)
     start:
         docker exec -it dataflow-server java -jar shell.jar
-
+    dashboard:
+        http://localhost:9393/dashboard/#/apps
     app import --uri https://dataflow.spring.io/rabbitmq-maven-latest
     app list
     app info --name file --type sink
-    stream create --definition "http --port=8086 | file --directory=C:/DEV --suffix=txt --name=output" --name hellodataflow
-    stream create --definition "http | log" --name http-ingest
+    stream create --definition "http --server.port=9000 | file --directory=C:/DEV --suffix=txt --name=output" --name hellodataflow
+    stream create --definition "http --server.port=9000 | log" --name http-ingest
+        https://docs.spring.io/spring-cloud-stream-app-starters/docs/current/reference/htmlsingle/#spring-cloud-stream-modules-log-sink
     stream list
     stream deploy --name hellodataflow
     stream deploy --name http-ingest
