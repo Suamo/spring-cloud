@@ -1,6 +1,7 @@
 @startuml
 ' https://cloudinsight.github.io/cicon/demo_fontclass.html
 ' https://www.uml-diagrams.org/component-diagrams.html
+skinparam componentStyle uml2
 !include <cloudinsight/rabbitmq>
 !include <cloudinsight/docker>
 !include <cloudinsight/mysql>
@@ -28,4 +29,6 @@ queue "<$rabbitmq>\nrabbitmq" as rabbitmq
 rectangle rectangle
 storage storage
 usecase usecase
+
+usecase --> storage
 @enduml

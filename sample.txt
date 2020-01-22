@@ -1,0 +1,42 @@
+@startuml
+skinparam componentStyle uml2
+
+!include <cloudinsight/rabbitmq>
+!include <cloudinsight/docker>
+!include <cloudinsight/mysql>
+!include <cloudinsight/redis>
+
+node "local machine" {
+    frame services {
+        artifact service1
+        artifact service2
+        artifact task
+    }
+    frame tools {
+        frame "Latency monitoring" {
+            artifact "Hystrix\nServer"
+            artifact "Turbine\nServer"
+            artifact "Zipkinn\nServer"
+        }
+        frame "Service discovery" {
+            artifact "Eureka\nServer"
+        }
+        frame "Configurations" {
+            artifact "Configuration\nServer"
+        }
+        frame "Application gateway" {
+            artifact "Zuul\nServer"
+        }
+        frame "Authentication" {
+            artifact "Authentication\nServer"
+        }
+    }
+
+    node "<$docker>\ndocker" {
+        artifact "<$redis>\nredis" as redis
+        database "<$mysql>\nDB" as DB
+        queue "<$rabbitmq>\nMOM" as rabbitmq
+    }
+}
+
+@enduml
