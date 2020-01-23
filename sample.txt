@@ -7,11 +7,6 @@ skinparam componentStyle uml2
 !include <cloudinsight/redis>
 
 node "local machine" {
-    frame services {
-        artifact service1
-        artifact service2
-        artifact task
-    }
     frame tools {
         frame "Latency monitoring" {
             artifact "Hystrix\nServer"
@@ -35,8 +30,28 @@ node "local machine" {
     node "<$docker>\ndocker" {
         artifact "<$redis>\nredis" as redis
         database "<$mysql>\nDB" as DB
-        queue "<$rabbitmq>\nMOM" as rabbitmq
+        artifact "<$rabbitmq>\nMOM" as MOM {
+            queue queue
+        }
     }
+
+    frame services {
+        artifact BottlesShop <<Service>>
+        artifact PlasticWarehouse <<Service>>
+        artifact GretaCommittee <<Task>>
+        artifact BottlesFactory <<Service>>
+    }
+
+    interface HTTP as http1
+    interface HTTP as http2
+
+    http1 --> BottlesShop
+    http2 --> PlasticWarehouse
+    GretaCommittee --> DB
+    PlasticWarehouse --> GretaCommittee
+    PlasticWarehouse --> BottlesFactory
+    BottlesFactory --> queue
+    queue --> BottlesShop
 }
 
 @enduml
